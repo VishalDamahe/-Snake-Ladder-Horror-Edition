@@ -1,0 +1,174 @@
+body {
+  margin: 0;
+  font-family: 'Creepster', cursive;
+  color: #fff;
+  text-align: center;
+  overflow-x: hidden;
+  position: relative;
+  background: url('https://img.freepik.com/premium-photo/red-fire-smoke-dark-black-horror-background-scary-cloud-hell-fire-evil-spirit-movie-poster_741309-351.jpg?w=740') no-repeat center center fixed;
+  background-size: cover;
+}
+
+/* 🔥 Animated Fog Overlay */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  background: url('https://tse3.mm.bing.net/th/id/OIP.Ezd2jziWva3iXyjZ7GymNQHaGl?pid=Api&P=0&h=180') repeat;
+  opacity: 0.12;
+  z-index: 0;
+  animation: fogMove 60s linear infinite;
+}
+
+@keyframes fogMove {
+  0% { background-position: 0 0; }
+  100% { background-position: 1000px 0; }
+}
+
+header, .game-container {
+  position: relative;
+  z-index: 1;
+}
+
+header h1 {
+  color: crimson;
+  font-size: 3em;
+  margin: 10px;
+  text-shadow: 0 0 10px #000, 0 0 20px red;
+}
+
+.turn {
+  font-size: 1.3em;
+  color: #ffe600;
+  margin-bottom: 15px;
+  text-shadow: 0 0 5px #000;
+}
+
+.player-input {
+  margin: 15px auto;
+}
+
+input {
+  padding: 10px;
+  margin: 5px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  background-color: #333;
+  color: white;
+}
+
+button {
+  padding: 10px 15px;
+  font-size: 16px;
+  background: darkred;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 5px;
+  transition: background 0.3s;
+}
+
+button:hover {
+  background: crimson;
+}
+
+.board {
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  grid-template-rows: repeat(10, 40px);
+  gap: 1px;
+  width: 90vw;
+  max-width: 420px;
+  margin: 20px auto;
+  border: 4px solid crimson;
+  background-color: rgba(0, 0, 0, 0.6);
+  position: relative;
+  box-shadow: 0 0 15px crimson;
+}
+
+.cell {
+  background: rgba(255, 255, 255, 0.03);
+  color: white;
+  border: 1px solid #444;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 12px;
+  position: relative;
+  transition: background 0.3s;
+}
+
+.cell:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.token {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 2px solid white;
+  position: absolute;
+  animation: flicker 1s infinite alternate;
+  z-index: 2;
+  transition: transform 0.3s, filter 0.3s;
+}
+
+/* 👻 Spooky Hover */
+.token:hover {
+  transform: scale(1.3) rotate(5deg);
+  filter: hue-rotate(20deg) drop-shadow(0 0 5px red);
+}
+
+@keyframes flicker {
+  from { opacity: 0.8; transform: scale(1); }
+  to { opacity: 1; transform: scale(1.1); }
+}
+
+#diceImg {
+  width: 80px;
+  cursor: pointer;
+  margin-top: 10px;
+  animation: pulse 1.2s infinite;
+  transition: transform 0.3s;
+}
+
+#diceImg:hover {
+  transform: scale(1.15);
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+.rip {
+  position: absolute;
+  top: 2px;
+  font-size: 12px;
+  color: red;
+  animation: fadeOut 2s forwards;
+  font-family: Arial, sans-serif;
+}
+
+@keyframes fadeOut {
+  0% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+/* 🩸 Blood Drip Text */
+.blood-drip {
+  color: crimson;
+  font-size: 2em;
+  position: relative;
+  text-shadow: 0 0 5px red, 0 0 10px black;
+  animation: drip 1.5s infinite ease-in-out;
+}
+
+@keyframes drip {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(5px); }
+}
